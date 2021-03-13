@@ -13,6 +13,7 @@ router.get(`/`, async (req, res) =>{
     res.send(userList);
 })
 router.get('/:id', async(req,res)=>{
+    // we exclude password from info presented to user
     const user = await User.findById(req.params.id).select('-passwordHash');
 
     if(!user) {
@@ -53,9 +54,11 @@ router.post('/login', async (req,res) => {
     }
 
        else if(user && bcrypt.compareSync(req.body.password, user.passwordHash)) {
+        //    jwt.sign means 
            const token = jwt.sign(
             {
-                userId: user.id ,//passing data with token
+                //passing data with token
+                userId: user.id ,
                isAdmin:user.isAdmin
             },
             secret,  
