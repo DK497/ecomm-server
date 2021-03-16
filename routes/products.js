@@ -132,8 +132,8 @@ router.put('/:id',async (req, res)=> {
         req.params.id,
         {
             name: req.body.name,
-            description: req.body.description,
-            richDescription: req.body.richDescription,
+            description: req.body.descr,
+            richDescription: req.body.richDesc,
             image: req.body.image,
             brand: req.body.brand,
             price: req.body.price,
