@@ -27,6 +27,7 @@ router.get(`/:oid`, async (req, res) =>{
 })
 
 router.post(`/`,async (req,res)=>{ 
+
 const orderItemIds=Promise.all(req.body.orderItems.map(async i=>{
     let newOrderItem=new OrderItem({
         quantity:i.quantity,
@@ -39,6 +40,7 @@ const orderItemIds=Promise.all(req.body.orderItems.map(async i=>{
 }))
 
 const orderItemIdsresolved= await orderItemIds;
+// resolving promise
 // console.log(orderItemIdsresolved);
 // to ensure price is coming from backend
 

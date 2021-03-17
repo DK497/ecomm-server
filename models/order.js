@@ -7,11 +7,11 @@ Order Example:
     "orderItems" : [
         {
             "quantity": 3,
-            "product" : "5fcfc406ae79b0a6a90d2585"
+            "product" : "5f15d964e520d44421ed8e9c"
         },
         {
             "quantity": 2,
-            "product" : "5fd293c7d3abe7295b1403c4"
+            "product" : "5f15d9b3e520d44421ed8e9d"
         }
     ],
     "shippingAddress1" : "Flowers Street , 45",
