@@ -30,12 +30,14 @@ const categoriesRoutes = require('./routes/categories');
 const prouter=require('./routes/products');
 const usersRoutes = require('./routes/users');
 const ordersRoutes = require('./routes/orders');
+const paymentRoutes=require('./routes/payment')
 
 // enabling routes
 app.use(`${api}/products`,prouter)
 app.use(`${api}/categories`, categoriesRoutes);
 app.use(`${api}/users`, usersRoutes);
 app.use(`${api}/orders`, ordersRoutes);
+app.use(`${api}/payment`, paymentRoutes);
 
 // DB
 mongoose.connect(process.env.conn_str,{
