@@ -19,12 +19,16 @@ app.options('*',cors());
 app.use(bp.json());
 app.use(morgan('tiny'));
 app.use(authjwt());
+
+// serving static files which were uploaded from client
 app.use('/public/upload',express.static(__dirname+'/public/upload'))
+
 app.use(errorHandler);
 
 app.get('/',(req,res)=>{
 res.send('hello api');
 });
+
 // Routes
 const categoriesRoutes = require('./routes/categories');
 const prouter=require('./routes/products');

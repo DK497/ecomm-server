@@ -4,6 +4,8 @@ const { OrderItem } = require('../models/order-item');
 const router = express.Router();
 
 router.get(`/`, async (req, res) =>{
+    // only name field along with id will be populated from
+    // user schema in order schema
     const orderList = await Order.find().populate('user','name').sort('dateOrdered');
 
     if(!orderList) {
@@ -16,8 +18,7 @@ router.get(`/:oid`, async (req, res) =>{
     const order = await Order.findById(req.params.oid)
     .populate('user','name')
     .populate({
-        path:'orderItems',populate:
-         {path:'product',populate:'category'}
+        path:'orderItems',populate:{path:'product',populate:'category'}
         });
 
     if(!order) {
@@ -29,12 +30,13 @@ router.get(`/:oid`, async (req, res) =>{
 router.post(`/`,async (req,res)=>{ 
 
 const orderItemIds=Promise.all(req.body.orderItems.map(async i=>{
+
     let newOrderItem=new OrderItem({
         quantity:i.quantity,
         product:i.product
     })
     newOrderItem= await newOrderItem.save()
-    //  returns item which was saved
+    //  returns a promise item which was saved
    
     return newOrderItem._id;//returning a promise
 }))

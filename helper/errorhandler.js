@@ -5,7 +5,7 @@ function errorHandler(err, req, res, next) {
     }
 
     if (err.name === 'ValidationError') {
-        //  validation error
+        //  validation error if we upload .pdf instead of .jpg
         return res.status(401).json({message: err})
     }
 

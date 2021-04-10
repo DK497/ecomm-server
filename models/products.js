@@ -57,6 +57,7 @@ const productSchema = mongoose.Schema({
         default:Date.now
     }
 });
+
 // creating virtual parameter
 productSchema.virtual('id').get(function () {
     return this._id.toHexString();
